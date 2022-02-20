@@ -42,5 +42,15 @@
 .auth-button:hover {
 	cursor: pointer;
 	background-color: #7abcff;
+}
+
+.link:link,
+.link:visited {
+	color: #000;
+	text-decoration: none;
+}
+
+.link:hover,
+.link:active {
 	color: #fff;
 }
