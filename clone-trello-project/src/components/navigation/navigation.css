@@ -1,0 +1,21 @@
+nav {
+	position: sticky;
+	background-color: #7abcff;
+	height: 50px;
+	margin-bottom: 25px;
+	display: flex;
+	align-items: center;
+}
+
+.home-icon {
+	width: 25px;
+	height: 25px;
+	margin-left: 35px;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.home-icon:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 10px #fff;
+}
