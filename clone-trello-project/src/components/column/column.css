@@ -1,0 +1,7 @@
+.column {
+	padding: 15px;
+	flex: 1;
+	min-width: 200px;
+	background-color: #e8f6ef;
+	border-radius: 20px;
+}
