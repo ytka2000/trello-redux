@@ -1,4 +1,4 @@
-import {REGISTER_URL, CARD_URL, LOGIN_URL, STATUS_URL} from "../ulils/requestUrl";
+import {REGISTER_URL} from "../ulils/requestUrl";
 
 export const registration = () => {
     //Hardcode this date now
