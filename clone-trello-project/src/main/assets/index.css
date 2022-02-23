@@ -1,10 +1,10 @@
-@import "./pages/dashboard/dashboard.css";
-@import "./pages/auth/auth.css";
-@import "./components/navigation/navigation.css";
-@import "./components/column/column.css";
-@import "./components/new-card/new-card.css";
-@import "./components/card/card.css";
-@import "./components/header/header.css";
+@import "../jsx/pages/dashboard/dashboard.css";
+@import "../jsx/pages/auth/auth.css";
+@import "../jsx/components/navigation/navigation.css";
+@import "../jsx/components/column/column.css";
+@import "../jsx/components/new-card/new-card.css";
+@import "../jsx/components/card/card.css";
+@import "../jsx/components/header/header.css";
 
 * {
 	margin: 0;
