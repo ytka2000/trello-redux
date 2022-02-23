@@ -1,6 +1,6 @@
 import {login} from "../request/authentication";
 import credentialsStorage from "./creds/CredentialsStorage";
-import {register} from "../request/register";
+import {register} from "../request/registration";
 
 class Authenticator {
 
