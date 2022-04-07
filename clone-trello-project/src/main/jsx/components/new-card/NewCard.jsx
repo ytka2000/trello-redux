@@ -1,7 +1,11 @@
 import React from "react";
 
-function NewCard() {
-	return <div className="new-card">+</div>;
+function NewCard({ status, createCard }) {
+	return (
+		<div className="new-card" onClick={() => createCard(status)}>
+			+
+		</div>
+	);
 }
 
 export default NewCard;

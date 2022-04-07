@@ -1,0 +1,21 @@
+.card-footer {
+	display: flex;
+	justify-content: right;
+}
+
+.save-button {
+	background-color: #7abcff;
+	color: #fff;
+	margin-top: 5px;
+	padding: 5px 10px;
+	border: 2px solid #7abcff;
+	border-radius: 10px;
+}
+
+.save-button:hover {
+	cursor: pointer;
+	background-color: #fff;
+	color: #000;
+	border-radius: 10px;
+	border: 2px dashed #7abcff;
+}

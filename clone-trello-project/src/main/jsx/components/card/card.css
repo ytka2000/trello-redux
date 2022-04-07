@@ -10,3 +10,24 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+.card-title {
+	font-size: 18px;
+	font-weight: bold;
+	max-width: 65%;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.card-description {
+	font-size: 16px;
+	max-width: 100%;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+textarea:focus,
+input:focus {
+	outline: none;
+	border: 1px solid #000;
+}
