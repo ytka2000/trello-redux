@@ -3,6 +3,7 @@ import deleteButton from "./images/delete-button.svg";
 import editButton from "./images/edit-button.svg";
 
 function Header({ cardId, deleteCard, changeEditMode }) {
+	console.log(cardId);
 	return (
 		<div className="icon-container">
 			{deleteCard && (

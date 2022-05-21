@@ -3,18 +3,7 @@ import ViewmodeCard from "../viewmode-card/ViewmodeCard";
 import EditmodeCard from "../editmode-card/EditmodeCard";
 import { editCard } from "../../../js/request/editCard";
 
-function Card({
-	title,
-	description,
-	status,
-	cardId,
-	editData,
-	deleteData,
-	editStatus,
-	statuses,
-}) {
-	const [thisTitle, setThisTitle] = useState(title);
-	const [thisDescription, setThisDescription] = useState(description);
+function Card({ card, editStatus, editData, deleteData, statuses }) {
 	const [editMode, setEditMode] = useState(editStatus);
 
 	function changeEditMode() {
@@ -22,12 +11,9 @@ function Card({
 	}
 
 	function editCurrentCard(data) {
-		setThisTitle(data.title);
-		setThisDescription(data.description);
-
-		editCard(cardId, data).then(() => {
+		editCard(data.id, data).then(() => {
 			changeEditMode();
-			editData(cardId, data);
+			editData(data.id, data);
 		});
 	}
 
@@ -35,20 +21,15 @@ function Card({
 		<>
 			{editMode ? (
 				<EditmodeCard
-					cardId={cardId}
-					cardData={{
-						title: thisTitle,
-						description: thisDescription,
-						status: status,
-					}}
+					card={card}
 					deleteData={deleteData}
 					editData={editCurrentCard}
 					statuses={statuses}
 				/>
 			) : (
 				<ViewmodeCard
-					cardId={cardId}
-					cardData={{ title: thisTitle, description: thisDescription }}
+					cardId={card.id}
+					cardData={{ title: card.title, description: card.description }}
 					deleteData={deleteData}
 					changeEditMode={changeEditMode}
 				/>

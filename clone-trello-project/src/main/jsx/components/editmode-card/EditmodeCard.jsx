@@ -3,48 +3,45 @@ import Header from "../header/Header";
 import StatusSelect from "../statuses/StatusSelect";
 import Footer from "../footer/Footer";
 
-function EditmodeCard({ cardId, cardData, deleteData, editData, statuses }) {
-	const [thisTitle, setThisTitle] = useState(cardData.title);
-	const [thisStatus, setThisStatus] = useState(cardData.status);
-	const [thisDescription, setThisDescription] = useState(cardData.description);
+function EditmodeCard({ card, deleteData, editData, statuses }) {
+	const [cardData, setCard] = useState({
+		...card,
+	});
 
-	function changeStatus(newValue) {
-		setThisStatus(newValue);
-	}
+	const handleChange = e => {
+		const { name, value } = e.target;
+		setCard(prev => ({
+			...prev,
+			[name]: value,
+		}));
+	};
 
 	return (
 		<div className="card">
 			<div className="card-header">
 				<input
+					name="title"
 					className="card-title"
-					defaultValue={cardData.title}
-					onChange={e => {
-						const newValue = e.target.value;
-						setThisTitle(newValue);
-					}}
+					value={cardData.title}
+					onChange={handleChange}
 				></input>
-				<Header deleteCard={deleteData} cardId={cardId} />
+				<Header deleteCard={deleteData} cardId={cardData.id} />
 			</div>
 			<StatusSelect
+				name="status"
 				statuses={statuses}
-				selectedStatus={thisStatus}
-				statusChange={changeStatus}
+				selectedStatus={cardData.status}
+				statusChange={handleChange}
 			/>
 			<textarea
+				name="description"
 				className="card-description"
-				defaultValue={cardData.description}
-				onChange={e => {
-					const newValue = e.target.value;
-					setThisDescription(newValue);
-				}}
+				value={cardData.description}
+				onChange={handleChange}
 			></textarea>
 			<Footer
 				editCard={() => {
-					editData({
-						title: thisTitle,
-						status: thisStatus,
-						description: thisDescription,
-					});
+					editData(cardData);
 				}}
 			/>
 		</div>

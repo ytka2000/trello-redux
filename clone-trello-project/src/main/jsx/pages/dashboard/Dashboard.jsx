@@ -15,7 +15,7 @@ function Dashboard() {
 	);
 
 	const refreshColumns = () => {
-		console.log("refreshColumns");
+		window.location.reload();
 	};
 
 	return (

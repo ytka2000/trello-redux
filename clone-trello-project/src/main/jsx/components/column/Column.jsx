@@ -20,15 +20,21 @@ function Column({ name, statusValue, statuses, refreshColumns, cards }) {
 	}
 
 	function editCardById(id, data) {
+		let refreshNeeded = false;
 		setColumnCards(prevList => {
 			return prevList.map(elem => {
 				if (elem.id === id) {
+					if (elem.status !== data.status) {
+						refreshNeeded = true;
+					}
 					return data;
 				}
 				return elem;
 			});
 		});
-		refreshColumns();
+		if (refreshNeeded) {
+			refreshColumns();
+		}
 	}
 
 	function createNewCard(status) {
@@ -51,19 +57,23 @@ function Column({ name, statusValue, statuses, refreshColumns, cards }) {
 		<div className="column">
 			<h2>{name}</h2>
 			<NewCard status={statusValue} createCard={createNewCard} />
-			{columnCards.sort(List.sortByDateCreatedAt).map(elem => (
-				<Card
-					key={uuidv4()}
-					title={elem.title}
-					description={elem.description}
-					status={elem.status}
-					statuses={statuses}
-					cardId={elem.id}
-					deleteData={deleteCardById}
-					editData={editCardById}
-					editStatus={elem.editStatus}
-				/>
-			))}
+			{columnCards.sort(List.sortByDateCreatedAt).map(elem => {
+				return (
+					<Card
+						key={uuidv4()}
+						card={{
+							title: elem.title,
+							description: elem.description,
+							status: elem.status,
+							id: elem.id,
+						}}
+						editStatus={elem.editStatus}
+						statuses={statuses}
+						deleteData={deleteCardById}
+						editData={editCardById}
+					/>
+				);
+			})}
 		</div>
 	);
 }

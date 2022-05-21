@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function StatusSelect({ statuses, selectedStatus, statusChange }) {
+function StatusSelect({ statuses, selectedStatus }) {
 	const [status, setStatus] = useState(selectedStatus);
 
 	return (
 		<>
 			<form>
-				<label for="statuses">Choose a car: </label>
+				<label htmlFor="statuses">Choose a car: </label>
 				<select
 					id="statuses"
 					onChange={e => {
 						const newValue = e.target.value;
 						setStatus(newValue);
-						statusChange(newValue);
 					}}
 				>
 					{statuses.map(elem => (

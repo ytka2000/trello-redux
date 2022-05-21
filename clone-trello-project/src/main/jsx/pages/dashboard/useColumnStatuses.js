@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getStatuses } from "../../../js/request/getStatuses";
 
-const useColumnStatuses = v => {
+const useColumnStatuses = () => {
 	const [columns, setColumns] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
@@ -19,12 +19,13 @@ const useColumnStatuses = v => {
 
 	useEffect(() => {
 		getColumns();
-	}, [, v]);
+	}, []);
 
 	return {
 		columns,
 		isLoadingColumns: isLoading,
 		isErrorColumns: isError,
+		getColumns,
 	};
 };
 
