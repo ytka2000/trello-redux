@@ -1,29 +1,12 @@
-import React, { useState, useEffect } from "react";
 import Column from "../../components/column/Column";
+import useColumnStatuses from "./useColumnStatuses";
+import useCards from "./useCards";
 import { v4 as uuidv4 } from "uuid";
-import { getStatuses } from "../../../js/request/getStatuses";
-import { getCards } from "../../../js/request/getCards";
 import { BallTriangle } from "react-loader-spinner";
 
 function Dashboard() {
-	const [cards, setCards] = useState();
-	const [columns, setColumns] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(async () => {
-		const columnsData = await getStatuses();
-		setColumns(columnsData);
-
-		const cardsData = await getCards();
-		setCards(() => cardsData.map(elem => ({ ...elem, editStatus: false })));
-
-		setIsLoading(false);
-	}, []);
-
-	async function refreshColumns() {
-		const columnsData = await getStatuses();
-		setColumns(columnsData);
-	}
+	const { columns, isLoadingColumns, isErrorColumns } = useColumnStatuses();
+	const { cards, isLoadingCards, isErrorCards } = useCards();
 
 	const spinner = (
 		<div className="spinner">
@@ -31,9 +14,13 @@ function Dashboard() {
 		</div>
 	);
 
+	const refreshColumns = () => {
+		console.log("refreshColumns");
+	};
+
 	return (
 		<div className="dashboard">
-			{isLoading
+			{isLoadingColumns || isLoadingCards
 				? spinner
 				: columns.map(elem => (
 						<Column
@@ -42,7 +29,7 @@ function Dashboard() {
 							statusValue={elem.value}
 							statuses={columns}
 							refreshColumns={refreshColumns}
-							cards={cards.filter(elem => elem.status === elem.value)}
+							cards={cards.filter(card => card.status === elem.value)}
 						/>
 				  ))}
 		</div>
