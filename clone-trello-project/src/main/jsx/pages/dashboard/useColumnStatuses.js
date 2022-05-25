@@ -25,7 +25,6 @@ const useColumnStatuses = () => {
 		columns,
 		isLoadingColumns: isLoading,
 		isErrorColumns: isError,
-		getColumns,
 	};
 };
 

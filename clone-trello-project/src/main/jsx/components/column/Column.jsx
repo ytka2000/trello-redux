@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import NewCard from "../new-card/NewCard";
 import Card from "../card/Card";
 import { v4 as uuidv4 } from "uuid";
@@ -37,7 +37,7 @@ function Column({ name, statusValue, statuses, refreshColumns, cards }) {
 		}
 	}
 
-	function createNewCard(status) {
+	const createNewCard = useCallback(status => {
 		const newCardData = {
 			title: "This is title",
 			status: status,
@@ -51,7 +51,7 @@ function Column({ name, statusValue, statuses, refreshColumns, cards }) {
 				});
 			})
 			.catch(e => console.log(e));
-	}
+	});
 
 	return (
 		<div className="column">

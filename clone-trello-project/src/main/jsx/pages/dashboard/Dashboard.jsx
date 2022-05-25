@@ -6,7 +6,7 @@ import { BallTriangle } from "react-loader-spinner";
 
 function Dashboard() {
 	const { columns, isLoadingColumns, isErrorColumns } = useColumnStatuses();
-	const { cards, isLoadingCards, isErrorCards } = useCards();
+	const { cards, isLoadingCards, isErrorCards, refetchCards } = useCards();
 
 	const spinner = (
 		<div className="spinner">
@@ -15,7 +15,7 @@ function Dashboard() {
 	);
 
 	const refreshColumns = () => {
-		window.location.reload();
+		refetchCards();
 	};
 
 	return (
