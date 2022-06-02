@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCard } from "../../requests/deleteCard";
 import deleteButton from "./images/delete-button.svg";
 import editButton from "./images/edit-button.svg";
+import { toggleEditModeAction } from "../../../store/cardActions";
+import { deleteCardAction } from "../../../store/cardActions";
 
 function Header({ id }) {
 	const cards = useSelector(state => state.cardsObj.cards);
@@ -12,13 +13,11 @@ function Header({ id }) {
 	const dispatch = useDispatch();
 
 	const onDelete = () => {
-		deleteCard(id)
-			.then(dispatch({ type: "deleteCard", payload: id }))
-			.catch(e => console.log(e));
+		dispatch(deleteCardAction(id));
 	};
 
 	const onToggleEditMode = () => {
-		dispatch({ type: "toggleEditMode", payload: id });
+		dispatch(toggleEditModeAction(id));
 	};
 
 	return (

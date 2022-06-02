@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
 import User from "../../../services/User";
 
+const user = new User();
+
 const useLogIn = () => {
 	const username = useRef(null);
 	const password = useRef(null);
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState("pending");
-
-	const user = new User();
 
 	function onSubmit(e) {
 		e.preventDefault();

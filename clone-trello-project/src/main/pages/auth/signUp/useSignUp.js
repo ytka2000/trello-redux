@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import User from "../../../services/User";
 
+const user = new User();
+
 const useSignUp = () => {
 	const email = useRef(null);
 	const username = useRef(null);
@@ -8,8 +10,6 @@ const useSignUp = () => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [isRegistered, setIsRegistered] = useState("pending");
-
-	const user = new User();
 
 	function onSubmit(e) {
 		e.preventDefault();

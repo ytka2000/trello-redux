@@ -17,7 +17,7 @@ function LogIn() {
 		<div className="auth-main-block">
 			<h1>Log in form</h1>
 			<form className="auth-block">
-				{isLoggedIn === "failed" ? <h5>Login failed</h5> : <></>}
+				{isLoggedIn === "failed" && <h5>Login failed</h5>}
 				<input
 					ref={userData.username}
 					className="auth-input"

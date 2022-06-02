@@ -1,17 +1,12 @@
 import React from "react";
-import { editCard } from "../../requests/editCard";
 import { useDispatch } from "react-redux";
+import { editCardAction } from "../../../store/cardActions";
 
 function Footer({ cardData }) {
 	const dispatch = useDispatch();
 
 	const onEdit = () => {
-		editCard(cardData)
-			.then(() => {
-				dispatch({ type: "editCard", payload: cardData });
-				dispatch({ type: "toggleEditMode", payload: cardData.id });
-			})
-			.catch(e => console.log(e));
+		dispatch(editCardAction(cardData));
 	};
 
 	return (

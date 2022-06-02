@@ -1,24 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { createCard } from "../../requests/createCard";
+import { createNewCardAction } from "../../../store/cardActions";
 
 function NewCard({ status }) {
 	const dispatch = useDispatch();
 
 	const onCreate = status => {
-		const newCardData = {
-			title: "This is title",
-			status: status,
-			description: "This is description",
-		};
-		createCard(newCardData)
-			.then(response => {
-				dispatch({
-					type: "createCard",
-					payload: { ...response, editMode: true },
-				});
-			})
-			.catch(e => console.log(e));
+		dispatch(createNewCardAction(status));
 	};
 
 	return (
