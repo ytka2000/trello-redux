@@ -1,12 +1,12 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import thunk from "redux-thunk";
-import cardReducer from "./cardReducer";
-import columnReducer from "./columnReducer";
+import cardReducer from "./cards/reducers";
+import columnReducer from "./columns/reducers";
 
 const rootReducer = combineReducers({
-	cardsObj: cardReducer,
-	columnsObj: columnReducer,
+	cards: cardReducer,
+	columns: columnReducer,
 });
 
 const store = createStore(
